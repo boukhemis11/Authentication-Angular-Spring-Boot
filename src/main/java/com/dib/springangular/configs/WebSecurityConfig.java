@@ -17,7 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 
-import com.djamware.springangularauth.services.CustomUserDetailsService;
+import com.dib.springangular.services.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity

@@ -4,6 +4,7 @@ import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'products',
+    canActivate: [AuthGuard],
     component: ProductsComponent,
     data: { title: 'List of Products' }
   },

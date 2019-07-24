@@ -20,13 +20,15 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule } from '@angular/material';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

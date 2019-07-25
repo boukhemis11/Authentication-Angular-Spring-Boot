@@ -1,5 +1,5 @@
 export class Product {
-    _id: number;
+    id: number;
     isbn: string;
     title: string;
     author: string;

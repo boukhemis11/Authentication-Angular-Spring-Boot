@@ -28,7 +28,7 @@ export class AddProductComponent implements OnInit {
   prodName = '';
   prodDesc = '';
   prodPrice = '';
-  prodImage = '';
+  //prodImage = '';
   isLoadingResults = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private productService: ProductService) { }
@@ -38,7 +38,7 @@ export class AddProductComponent implements OnInit {
       'prodName' : [null, Validators.required],
       'prodDesc' : [null, Validators.required],
       'prodPrice' : [null],
-      'prodImage' : [null, Validators.required]
+      //'prodImage' : [null, Validators.required]
     });
   }
 

@@ -27,7 +27,6 @@ import com.dib.springangular.services.CustomUserDetailsService;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
 	@Autowired
 	AuthenticationManager authenticationManager;
 
@@ -68,4 +67,6 @@ public class AuthController {
 		model.put("message", "User registered successfully");
 		return ok(model);
 	}
+
+
 }

@@ -1,0 +1,7 @@
+mat-card {
+    flex: 1;
+}
+
+mat-form-field {
+    justify-content: space-between;
+}

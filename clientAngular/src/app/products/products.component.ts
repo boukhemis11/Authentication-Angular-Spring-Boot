@@ -11,7 +11,7 @@ import { Product } from './product';
 })
 export class ProductsComponent implements OnInit {
   data: Product[] = [];
-  displayedColumns: string[] = ['prodName', 'prodDesc', 'prodPrice'];
+  displayedColumns: string[] = ['prodName', 'prodDesc', 'prodPrice', 'icon-update', 'icon-delete'];
   isLoadingResults = true;
 
   constructor(private productService: ProductService, private authService: AuthService, private router: Router) { }
@@ -32,8 +32,4 @@ export class ProductsComponent implements OnInit {
       });
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigate(['login']);
-  }
 }

@@ -10,6 +10,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {
   MatInputModule,
   MatPaginatorModule,
@@ -20,7 +21,10 @@ import {
   MatButtonModule,
   MatCardModule,
   MatFormFieldModule } from '@angular/material';
+
 import { AddProductComponent } from './add-product/add-product.component';
+import { HeaderComponent } from './header/header.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,9 @@ import { AddProductComponent } from './add-product/add-product.component';
     ProductsComponent,
     LoginComponent,
     RegisterComponent,
-    AddProductComponent
+    AddProductComponent,
+    HeaderComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +51,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     MatCardModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatToolbarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

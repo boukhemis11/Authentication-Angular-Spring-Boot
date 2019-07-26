@@ -5,3 +5,7 @@ mat-card {
 mat-form-field {
     justify-content: space-between;
 }
+
+.btnSave {
+    margin-right: 1%;
+}

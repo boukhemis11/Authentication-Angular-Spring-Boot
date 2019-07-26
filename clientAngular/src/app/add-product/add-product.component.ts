@@ -53,5 +53,9 @@ export class AddProductComponent implements OnInit {
       });
   }
 
+  back() {
+    this.router.navigate(['/products']);
+  }
+
 
 }

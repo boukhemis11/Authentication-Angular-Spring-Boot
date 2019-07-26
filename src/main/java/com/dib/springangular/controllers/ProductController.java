@@ -28,7 +28,7 @@ public class ProductController {
     @Autowired
     ProductRepository productRepository;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/products")
+    @GetMapping("/products")
     public Iterable<Products> product() {
         return productRepository.findAll();
     }
@@ -46,19 +46,19 @@ public class ProductController {
     }
 
     @PutMapping("/products/{id}")
-    ResponseEntity<Products> replaceProduct(@RequestBody Products pr, @PathVariable String id) {
+    ResponseEntity<Products> replaceProduct(@RequestBody Products product, @PathVariable String id) {
 
         Optional<Products> productData = productRepository.findById(id);
         if (productData.isPresent()) {
             Products _product = productData.get();
-            _product.setProdName(pr.getProdName());
-            _product.setProdDesc(pr.getProdDesc());
-            _product.setProdPrice(pr.getProdPrice());
+            _product.setProdName(product.getProdName());
+            _product.setProdDesc(product.getProdDesc());
+            _product.setProdPrice(product.getProdPrice());
 
             return new ResponseEntity<Products> (productRepository.save(_product), HttpStatus.OK);
-          } else {
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-          }
+        }
     }
  
     @DeleteMapping("/products/{id}")

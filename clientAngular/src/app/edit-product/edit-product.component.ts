@@ -63,7 +63,7 @@ export class EditProductComponent implements OnInit {
       );
   }
 
-  producteDetails() {
-    this.router.navigate(['/show-product', this.id]);
+  back() {
+    this.router.navigate(['/products']);
   }
 }

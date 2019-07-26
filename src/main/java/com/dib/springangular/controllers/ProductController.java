@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import com.dib.springangular.models.Products;
 import com.dib.springangular.repositories.ProductRepository;
 import org.hibernate.validator.internal.util.logging.Log;
-import org.slf4j.LoggerFactory
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
@@ -37,19 +40,25 @@ public class ProductController {
 
     @PostMapping(path = "/products")
     public Products addProduct(@RequestBody Products product) {
-        def slf4jLogger = LoggerFactory.getLogger('some-logger')
-        slf4jLogger.info('An info log message logged using SLF4j')
         Products pt = productRepository.save(product);
         System.out.println(pt);
         return pt;
     }
 
     @PutMapping("/products/{id}")
-    Products replaceProduct(@RequestBody Products pr, @PathVariable String id) {
-        def slf4jLogger = LoggerFactory.getLogger('some-logger')
-        slf4jLogger.info('An info log message logged using SLF4j')
-        pr = productRepository.findById(id).get();
-        return productRepository.save(pr);
+    ResponseEntity<Products> replaceProduct(@RequestBody Products pr, @PathVariable String id) {
+
+        Optional<Products> productData = productRepository.findById(id);
+        if (productData.isPresent()) {
+            Products _product = productData.get();
+            _product.setProdName(pr.getProdName());
+            _product.setProdDesc(pr.getProdDesc());
+            _product.setProdPrice(pr.getProdPrice());
+
+            return new ResponseEntity<Products> (productRepository.save(_product), HttpStatus.OK);
+          } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+          }
     }
  
     @DeleteMapping("/products/{id}")

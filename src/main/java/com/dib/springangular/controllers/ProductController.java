@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import com.dib.springangular.models.Products;
 import com.dib.springangular.repositories.ProductRepository;
+import org.hibernate.validator.internal.util.logging.Log;
+import org.slf4j.LoggerFactory
 
 @CrossOrigin(origins = "*")
 @RequestMapping("/api")
@@ -35,18 +37,23 @@ public class ProductController {
 
     @PostMapping(path = "/products")
     public Products addProduct(@RequestBody Products product) {
+        def slf4jLogger = LoggerFactory.getLogger('some-logger')
+        slf4jLogger.info('An info log message logged using SLF4j')
         Products pt = productRepository.save(product);
+        System.out.println(pt);
         return pt;
     }
 
     @PutMapping("/products/{id}")
-    Products replaceSpecie(@RequestBody Products pr, @PathVariable String id) {
-        pr =productRepository.findById(id).get();
+    Products replaceProduct(@RequestBody Products pr, @PathVariable String id) {
+        def slf4jLogger = LoggerFactory.getLogger('some-logger')
+        slf4jLogger.info('An info log message logged using SLF4j')
+        pr = productRepository.findById(id).get();
         return productRepository.save(pr);
     }
  
     @DeleteMapping("/products/{id}")
-    void deleteSpecie(@PathVariable String id) {
+    void deleteProduct(@PathVariable String id) {
         productRepository.deleteById(id);
     }
 }

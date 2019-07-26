@@ -32,8 +32,8 @@
 
         <!-- Title Column -->
         <ng-container matColumnDef="icon-delete">
-            <th mat-header-cell *matHeaderCellDef>Delete</th>
-            <td mat-cell *matCellDef="let row"><mat-icon aria-hidden="false" >delete</mat-icon></td>
+            <th mat-header-cell *matHeaderCellDef  >Delete</th>
+            <td mat-cell *matCellDef="let row"><mat-icon aria-hidden="false" (click)="deleteProduct(row.id)">delete</mat-icon></td>
         </ng-container>
 
 

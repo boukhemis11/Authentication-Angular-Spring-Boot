@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from './product';
 
 @Component({
@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   displayedColumns: string[] = ['prodName', 'prodDesc', 'prodPrice', 'icon-update', 'icon-delete'];
   isLoadingResults = true;
 
-  constructor(private productService: ProductService, private authService: AuthService, private router: Router) { }
+  constructor(private route: ActivatedRoute,private productService: ProductService, private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
@@ -30,6 +30,17 @@ export class ProductsComponent implements OnInit {
         console.log(err);
         this.isLoadingResults = false;
       });
+  }
+
+  deleteProduct(id:string): void {
+    this.productService.deleteProduct(id).subscribe(
+      data => this.refresh(data))
+  }
+  refresh(data) {
+    console.log('data', data);
+    this.productService.getProducts().subscribe(data => {
+      this.data = data;
+    });
   }
 
 }

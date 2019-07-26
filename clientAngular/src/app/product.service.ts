@@ -36,7 +36,7 @@ export class ProductService {
   addProducts(data:Product): Observable<Product> {
     return this.http.post<Product>(apiUrl, data, httpOptions)
       .pipe(
-        tap((pr :Product) => console.log(`add Products w/ id=${pr._id}`)),
+        tap((pr :Product) => console.log(`add Products w/ id=${pr.id}`)),
         catchError(this.handleError<any>('addProduct'))
       );
   }
